@@ -134,9 +134,9 @@ public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal
 
         radioGrupo.add(radioHerbivoro);
         radioHerbivoro.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        radioHerbivoro.setSelected(true);
         radioHerbivoro.setText("Herbívoro");
         radioHerbivoro.setToolTipText("Nuevo animal herbívoro");
+        radioHerbivoro.setFocusable(false);
         radioHerbivoro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         radioHerbivoro.setPreferredSize(new java.awt.Dimension(150, 35));
 

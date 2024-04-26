@@ -172,9 +172,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="3"/>
         </Property>
-        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Herb&#xed;voro"/>
         <Property name="toolTipText" type="java.lang.String" value="Nuevo animal herb&#xed;voro"/>
+        <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[150, 35]"/>

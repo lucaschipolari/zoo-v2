@@ -113,11 +113,11 @@ public class VistaSectores extends VistaBase implements IVistaSectores {
         double totalHerbivoros = 0;
         
         for(Sector sector : sectores){
-            switch(sector.getColor()){
-                case ROJO:
+            switch(sector.getTipoAlimentacion()){
+                case CARNIVORO:
                     totalCarnivoros += sector.calcularAlimentoSector();
                     break;
-                case VERDE:
+                case HERBIVORO:
                     totalHerbivoros += sector.calcularAlimentoSector();
                     break;
             }

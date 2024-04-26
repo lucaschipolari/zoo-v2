@@ -23,7 +23,6 @@ public class ControladorAgregarAnimal implements IControlador {
     public void iniciar() {
         vista = new VistaAgregarAnimal();
         vista.asignarControlador(this);
-        vista.cargarSectores(repo.getSectores());
         vista.setVisible(true);
     }
 
@@ -33,15 +32,16 @@ public class ControladorAgregarAnimal implements IControlador {
             vista.carnivoroSeleccionado();
             List<Sector> myList = repo.getSectoresPorTipoAlimentacion(TipoAlimentacion.CARNIVORO);
             ArrayList<Sector> miArrayList = new ArrayList<>(myList);
-            System.out.println(miArrayList);
             vista.cargarSectores(miArrayList);
-            System.out.println("Controlador.ControladorAgregarAnimal.actionPerformed()");        
+            
         } else if (e.getActionCommand().equals(vista.RADIO_HERBIVORO)) {
             vista.herbivoroSeleccionado();
             List<Sector> myList = repo.getSectoresPorTipoAlimentacion(TipoAlimentacion.HERBIVORO);
             ArrayList<Sector> miArrayList = new ArrayList<>(myList);
-            System.out.println(miArrayList);
-            vista.cargarSectores(repo.getSectores());
+            for(Sector sec : miArrayList){
+                System.out.println(sec.getNumeroId());
+            }
+            vista.cargarSectores(miArrayList);
         } else if (e.getActionCommand().equals(vista.VOLVER)) {
             vista.volverSeleccionado();
         } else if (e.getActionCommand().equals(vista.ACEPTAR)) {
