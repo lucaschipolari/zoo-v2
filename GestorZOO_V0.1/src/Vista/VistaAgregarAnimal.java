@@ -1,10 +1,17 @@
 package Vista;
 
 import Controlador.IControlador;
+import Datos.Repositorio;
+import Modelo.Animal;
+import Modelo.Carnivoro;
+import Modelo.Especie;
+import Modelo.Herbivoro;
+import Modelo.Pais;
 import Modelo.Sector;
 import Modelo.TipoAlimentacion;
 import java.util.ArrayList;
 import Utilidades.VerificadorDouble;
+import java.util.InvalidPropertiesFormatException;
 
 public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal {
 
@@ -70,35 +77,41 @@ public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal
         }
     }
     
-    public ArrayList<Object> aceptarSeleccionado() {
-        String especie = txtEspecie.getText();
-        String pais = txtPais.getText();
-        String edad = spinnerEdad.getValue().toString();
-        String peso = txtPeso.getText();
+    public void aceptarSeleccionado() throws InvalidPropertiesFormatException {
+//        String especie = txtEspecie.getText();
+        int edad = Integer.parseInt(spinnerEdad.getValue().toString());
+        double peso = Double.parseDouble(txtPeso.getText());
+        int numSector = Integer.parseInt(cmbSector.getSelectedItem().toString());
         
-        String extra = "";
+        Pais pais = Repositorio.getPais(Repositorio.buscarCod(txtPais.getText()));
+        Especie esp = Repositorio.getEspecie(txtEspecie.getText());
+        Sector sector = Repositorio.getSector(numSector);
+        double extra = 0.00;
         TipoAlimentacion tipo = null;
+        Animal animal = null;
         if(radioCarnivoro.isSelected()) {
-            extra = txtPorPeso.getText();
             tipo = TipoAlimentacion.CARNIVORO;
-        }
+            animal = new Carnivoro(edad,peso,pais,esp,sector);
+        }else
         if(radioHerbivoro.isSelected()){
-            extra = txtBaseKg.getText();
+            extra = Double.parseDouble(txtBaseKg.getText());
             tipo = TipoAlimentacion.HERBIVORO;
+            animal = new Herbivoro(edad,peso,pais,esp,sector,extra);
         }
-        System.out.println("aceptarSeleccionado()"+tipo);
+
         
-        String sector = cmbSector.getSelectedItem().toString();
-        ArrayList<Object> datos = new ArrayList<>();
-        datos.add(especie);
-        datos.add(pais);
-        datos.add(edad);
-        datos.add(peso);
-        datos.add(extra);
-        datos.add(tipo);
-        datos.add(sector);
-        
-        return datos;
+//        ArrayList<Object> datos = new ArrayList<>();
+//        datos.add(especie);
+//        datos.add(pais);
+//        datos.add(edad);
+//        datos.add(peso);
+//        datos.add(extra);
+//        datos.add(tipo);
+//        datos.add(sector);
+//        
+
+        Repositorio.agregarAnimal(animal);
+        this.dispose();
     }
 
     @SuppressWarnings("unchecked")
@@ -217,6 +230,11 @@ public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal
 
         btnVolver.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         lblPesoKg.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblPesoKg.setText("Kg");
@@ -224,6 +242,11 @@ public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal
 
         cmbSector.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         cmbSector.setPreferredSize(new java.awt.Dimension(220, 35));
+        cmbSector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSectorActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("Sector");
@@ -337,6 +360,18 @@ public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSectorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSectorActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        txtPais.setText("");
+        txtEspecie.setText("");
+        txtBaseKg.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnVolver;

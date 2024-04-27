@@ -168,7 +168,7 @@ public class Sector {
     }
     
     public String nombrarSector(){
-        return "Sector " + Integer.toString(numeroId) + " [ " + nombrarCoordenadas() + " ]";
+        return Integer.toString(numeroId);
     }
     
     public boolean hayEspacio(){

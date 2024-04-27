@@ -6,11 +6,17 @@ import Modelo.TipoAlimentacion;
 import Vista.VistaAgregarAnimal;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.InvalidPropertiesFormatException;
 import java.util.List;
+import Modelo.*;
+import Vista.VistaSectores;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladorAgregarAnimal implements IControlador {
 
     private VistaAgregarAnimal vista;
+    private VistaSectores vistaS;
     private Repositorio repo;
     private IControlador padre;
     
@@ -45,12 +51,18 @@ public class ControladorAgregarAnimal implements IControlador {
         } else if (e.getActionCommand().equals(vista.VOLVER)) {
             vista.volverSeleccionado();
         } else if (e.getActionCommand().equals(vista.ACEPTAR)) {
-/*
-            repo.iniciaAgregarAnimal(vista.aceptarSeleccionado());
-            vista.volverSeleccionado();
-            padre.terminado(vista.ACEPTAR);
-*/
+            try {
+                vista.aceptarSeleccionado();
+            } catch (InvalidPropertiesFormatException ex) {
+                Logger.getLogger(ControladorAgregarAnimal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+//                repo.iniciaAgregarAnimal(vista.aceptarSeleccionado());
+//                vista.volverSeleccionado();
+//                padre.terminado(vista.ACEPTAR);
+//                
         }
+        
     }
 
     @Override

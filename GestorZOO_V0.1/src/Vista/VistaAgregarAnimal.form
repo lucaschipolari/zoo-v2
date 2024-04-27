@@ -392,6 +392,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPesoKg">
       <Properties>
@@ -416,6 +419,9 @@
           <Dimension value="[220, 35]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbSectorActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

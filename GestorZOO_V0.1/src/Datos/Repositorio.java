@@ -37,7 +37,7 @@ public class Repositorio {
         paises.add(bolivia);       
     }
         private static void inicializarEspecies() {
-        especies.add(new Especie("León", TipoAlimentacion.CARNIVORO, 0.7));
+        especies.add(new Especie("Leon", TipoAlimentacion.CARNIVORO, 0.7));
         especies.add(new Especie("Jirafa", TipoAlimentacion.HERBIVORO, 0));
         especies.add(new Especie("Tigre", TipoAlimentacion.CARNIVORO, 0.5));
         especies.add(new Especie("Rinoceronte", TipoAlimentacion.HERBIVORO, 0));
@@ -109,6 +109,15 @@ public class Repositorio {
 
     public static void agregarAnimal(Animal animal){
         animales.add(animal);
+    }
+    
+        public static int buscarCod(String pais){
+        for(Pais p: paises){
+            if(p.getNombre().equals(pais)){
+                return p.getCodigoIso();
+            }
+        }
+        return 0;
     }
 
     public static double getTotalComida(TipoAlimentacion tipoAlimentacion){
