@@ -16,20 +16,21 @@ public abstract class Animal {
     protected Sector sector;
     protected TipoAlimentacion tipoAlimentacion;
 
+  protected Animal(TipoAlimentacion tipoAlimentacion, int edad, double peso, Pais origen, Especie especie, Sector sector) throws IllegalArgumentException, InvalidPropertiesFormatException {
+    if (origen == null) throw new IllegalArgumentException();
+    if (especie == null) throw new IllegalArgumentException();
+    if (sector == null) throw new IllegalArgumentException();
+    if (especie.getTipoAlimentacion() != tipoAlimentacion) throw new InvalidPropertiesFormatException("El animal no puede pertenecer a la especie");
 
-    protected Animal(TipoAlimentacion tipoAlimentacion,int edad, double peso, Pais origen, Especie especie, Sector sector) throws IllegalArgumentException, InvalidPropertiesFormatException {
-        if(origen == null) throw new IllegalArgumentException();
-        if(especie == null) throw new IllegalArgumentException();
-        if(sector == null) throw  new IllegalArgumentException();
-        if(especie.getTipoAlimentacion() != tipoAlimentacion) throw new InvalidPropertiesFormatException("El animal no puede pertenecer a la especie");
-        this.tipoAlimentacion = tipoAlimentacion;
-        this.edad = edad;
-        this.peso = peso;
-        this.origen = origen;
-        this.especie = especie;
-        this.sector = sector;
-        sector.agregarAnimal(this);
-    }
+    this.tipoAlimentacion = tipoAlimentacion;
+    this.edad = edad;
+    this.peso = peso;
+    this.origen = origen;
+    this.especie = especie;
+    this.especieEjemplar = especie; // Asignación de especie a especieEjemplar
+    this.sector = sector;
+    sector.agregarAnimal(this);
+}
 
     public abstract double calcularCantidadDeComida();
     

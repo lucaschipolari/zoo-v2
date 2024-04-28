@@ -130,6 +130,7 @@ public class Sector {
         double alimento = 0;
         for(Animal animal : animales){
             alimento += animal.calcularAlimento();
+            System.out.println("Modelo.Sector.calcularAlimentoSector()");
         }
         return alimento;
     }

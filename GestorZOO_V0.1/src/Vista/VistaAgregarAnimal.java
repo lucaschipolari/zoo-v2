@@ -12,6 +12,7 @@ import Modelo.TipoAlimentacion;
 import java.util.ArrayList;
 import Utilidades.VerificadorDouble;
 import java.util.InvalidPropertiesFormatException;
+import javax.swing.JOptionPane;
 
 public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal {
 
@@ -77,42 +78,76 @@ public class VistaAgregarAnimal extends VistaBase implements IVistaAgregarAnimal
         }
     }
     
-    public void aceptarSeleccionado() throws InvalidPropertiesFormatException {
-//        String especie = txtEspecie.getText();
+  public ArrayList<Object> aceptarSeleccionado() throws InvalidPropertiesFormatException {
+    try {
+          // Verificar que los campos de texto no estén vacíos o contengan valores no numéricos
+        if (Utils.isNullOrEmpty(txtPais.getText()) || Utils.isNullOrEmpty(txtEspecie.getText())) {
+        JOptionPane.showMessageDialog(this, "Debe completar todos los campos.", "Error de entrada", JOptionPane.ERROR_MESSAGE);
+        return null; // No cerrar la ventana y detener la ejecución del método
+        }
+    
         int edad = Integer.parseInt(spinnerEdad.getValue().toString());
         double peso = Double.parseDouble(txtPeso.getText());
+        TipoAlimentacion tipo = null;
+        double extra = 0.0;
         int numSector = Integer.parseInt(cmbSector.getSelectedItem().toString());
         
-        Pais pais = Repositorio.getPais(Repositorio.buscarCod(txtPais.getText()));
-        Especie esp = Repositorio.getEspecie(txtEspecie.getText());
+        Pais pais = new Pais(txtPais.getText(), generarCodigoISO());
         Sector sector = Repositorio.getSector(numSector);
-        double extra = 0.00;
-        TipoAlimentacion tipo = null;
-        Animal animal = null;
-        if(radioCarnivoro.isSelected()) {
-            tipo = TipoAlimentacion.CARNIVORO;
-            animal = new Carnivoro(edad,peso,pais,esp,sector);
-        }else
-        if(radioHerbivoro.isSelected()){
-            extra = Double.parseDouble(txtBaseKg.getText());
-            tipo = TipoAlimentacion.HERBIVORO;
-            animal = new Herbivoro(edad,peso,pais,esp,sector,extra);
-        }
-
         
-//        ArrayList<Object> datos = new ArrayList<>();
-//        datos.add(especie);
-//        datos.add(pais);
-//        datos.add(edad);
-//        datos.add(peso);
-//        datos.add(extra);
-//        datos.add(tipo);
-//        datos.add(sector);
-//        
-
-        Repositorio.agregarAnimal(animal);
+        // Obtener el tipo de alimentación del animal
+        if (radioCarnivoro.isSelected()) {
+            tipo = TipoAlimentacion.CARNIVORO;
+            extra = Double.parseDouble(txtPorPeso.getText());
+        } else if (radioHerbivoro.isSelected()) {
+            tipo = TipoAlimentacion.HERBIVORO;
+            extra = Double.parseDouble(txtBaseKg.getText());
+        } else {
+            // Manejar el caso en que no se selecciona ningún tipo de alimentación
+            throw new IllegalArgumentException("Debe seleccionar un tipo de alimentación para el animal.");
+        }
+        
+        // Crear la especie del animal
+        Especie especie = new Especie(txtEspecie.getText(), tipo, extra);
+      
+        
+        
+        // Crear el animal correspondiente al tipo de alimentación seleccionado
+        Animal animal = null;
+        if (tipo == TipoAlimentacion.CARNIVORO) {
+            animal = new Carnivoro(edad, peso, pais, especie, sector);
+        } else if (tipo == TipoAlimentacion.HERBIVORO) {
+            animal = new Herbivoro(edad, peso, pais, especie, sector, extra);
+        }
+        
+        // Crear la lista de datos y agregarlos
+        ArrayList<Object> datos = new ArrayList<>();
+        datos.add(especie);
+        datos.add(pais);
+        datos.add(edad);
+        datos.add(peso);
+        datos.add(extra);
+        datos.add(tipo);
+        datos.add(sector);
+        
         this.dispose();
+        return datos;
+        
+    } catch (NumberFormatException e) {
+        // Manejar el caso en que se ingresan valores incorrectos para la edad, peso, etc.
+        JOptionPane.showMessageDialog(this, "Ingrese valores numéricos válidos para la edad, peso, etc.", "Error de entrada", JOptionPane.ERROR_MESSAGE);
+        return null; // O devolver una lista vacía u otro valor según tu lógica
+    } catch (IllegalArgumentException e) {
+        // Manejar el caso en que no se selecciona un tipo de alimentación
+        JOptionPane.showMessageDialog(this, e.getMessage(), "Error de entrada", JOptionPane.ERROR_MESSAGE);
+        return null; // O devolver una lista vacía u otro valor según tu lógica
     }
+}
+    private int generarCodigoISO() {
+    // Lógica para generar el código ISO automáticamente
+    // Por ejemplo, puedes generar un código aleatorio o basado en algún criterio específico
+    return (int)(Math.random() * 100); // Genera un código ISO aleatorio
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

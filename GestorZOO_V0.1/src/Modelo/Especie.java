@@ -5,6 +5,8 @@ public class Especie {
     private double porcentajePesoCarnivoro;
 
     private TipoAlimentacion tipoAlimentacion;
+    public Especie (){
+    }
 
     public Especie(String nombre, TipoAlimentacion tipoAlimentacion, double porcentajePesoCarnivoro) {
         this.nombre = nombre;

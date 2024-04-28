@@ -4,6 +4,7 @@ import Modelo.*;
 import java.util.ArrayList;
 import java.util.List;
 import Modelo.*;
+import java.util.InvalidPropertiesFormatException;
 
 public class Repositorio {
     
@@ -58,10 +59,37 @@ public class Repositorio {
         sectores.add(new Sector(4, -26.257250, -65.523514, 10, TipoAlimentacion.CARNIVORO, empleadoCuatro));
         
     }
-    public static void inicializar (){
+  /*     public static void agregarAnimales() throws InvalidPropertiesFormatException {
+    for (Especie especie : especies) {
+        for (Sector sector : sectores) {
+            if (especie.getTipoAlimentacion() == sector.getTipoAlimentacion()) {
+                try {
+                    Animal animal = new Animal(especie.getTipoAlimentacion(), 0, 0,new Pais("Argentina",604), especie, sector) {
+                        @Override
+                        public double calcularCantidadDeComida() {
+                            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                        }
+                    };
+                    // Asigna un id único al animal si fuera necesario
+                    animal.setIdAnimal(generarIdUnico());
+                } catch (IllegalArgumentException e) {
+                    // Maneja la excepción según tu lógica, como imprimir un mensaje de error o lanzar una excepción superior
+                    System.out.println("Error al crear el animal: " + e.getMessage());
+                }
+            }
+        }
+    }
+}*/
+/*
+private static int generarIdUnico() {
+    // Lógica para generar un id único, puedes implementarla según tus necesidades
+    return (int) (Math.random() * 1000);
+}*/
+    public static void inicializar () throws InvalidPropertiesFormatException{
         inicializarSectores();
-        inicializarEspecies();
-        inicializarPaises ();
+        //inicializarEspecies();
+        //inicializarPaises ();
+        //agregarAnimales();
     }
     
     //
@@ -107,9 +135,7 @@ public class Repositorio {
                 .orElseThrow();
     }
 
-    public static void agregarAnimal(Animal animal){
-        animales.add(animal);
-    }
+ 
     
         public static int buscarCod(String pais){
         for(Pais p: paises){
@@ -140,8 +166,8 @@ public class Repositorio {
     
 
     //Métodos
-    /*
-    public void iniciaAgregarAnimal(ArrayList<Object> datos){
+    
+   /* public void iniciaAgregarAnimal(ArrayList<Object> datos){
             for(Sector sec : sectores){
                 if(sec.nombrarSector().equals(datos.get(6))){
                     Especie esp = getEspecie((String) datos.get(0));
@@ -151,25 +177,26 @@ public class Repositorio {
                     double extra = Double.parseDouble((String) datos.get(4));
                     TipoAlimentacion tipo = (TipoAlimentacion) datos.get(5);
                     
-                    Animal animal;
-                    /*switch(tipo){
+                    switch(tipo){
                         case CARNIVORO:
-                            animal = new Animal(totalAnimales()+1,
-                                                      ps, esp, edad, peso, extra/100);
+                            Carnivoro carn = new Carnivoro(totalAnimales()+1,
+                                                      extra/100, ps, esp, sec);
+                            
+                            sec.agregarAnimal(carn);
                             break;
                         case HERBIVORO:
-                            animal = new Herbivoro(totalAnimales()+1,
-                                                      ps, esp, edad, peso, extra);
+                            Herbivoro herv = new Herbivoro(totalAnimales()+1,
+                                                     extra/100, ps, esp, sec,edad);
+                            sec.agregarAnimal(herv);
                             break;
                         default:
-                            animal = null;
                             break;
                     }
                  //   sec.agregarAnimal(animal);
             }
         }
     }
-*/
+
     /*
     public Especie consultarEspecie(String especie){
         for(Especie esp : especies){
@@ -187,6 +214,7 @@ public class Repositorio {
         paises.add(nuevoPais);
         return nuevoPais;
     }
+*/
     public Sector consultarSector(String id){
         for(Sector s : sectores){
             if(Integer.toString(s.getNumeroId()).equals(id)){
@@ -195,7 +223,7 @@ public class Repositorio {
         }
         return null;
     }
-    */
+    
     public int totalCarnivoros(){
         int carnivoros = 0;
         for(Sector sec : sectores){

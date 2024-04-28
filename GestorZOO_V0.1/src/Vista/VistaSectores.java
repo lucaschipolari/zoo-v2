@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.IControlador;
+import Datos.Repositorio;
 import Modelo.Sector;
 import Modelo.TipoAlimentacion;
 import java.awt.Color;
@@ -108,26 +109,27 @@ public class VistaSectores extends VistaBase implements IVistaSectores {
             this.pack();
     }
     
-    public void representarAlimento(ArrayList<Sector> sectores){
-        double totalCarnivoros = 0;
-        double totalHerbivoros = 0;
+   public void representarAlimento(ArrayList<Sector> sectores) {
+    double totalCarnivoros =0;
+    double totalHerbivoros =0;
+    for (Sector sector : sectores) {
         
-        for(Sector sector : sectores){
-            switch(sector.getTipoAlimentacion()){
-                case CARNIVORO:
-                    totalCarnivoros += sector.calcularAlimentoSector();
-                    break;
-                case HERBIVORO:
-                    totalHerbivoros += sector.calcularAlimentoSector();
-                    break;
-            }
+        switch (sector.getTipoAlimentacion()) {
+            case CARNIVORO:
+                totalCarnivoros += sector.calcularAlimentoSector();
+                break;
+            case HERBIVORO:
+                totalHerbivoros += sector.calcularAlimentoSector();
+                break;
         }
-        double totalGeneral = totalCarnivoros + totalHerbivoros;
-        
-        lblTotalCarnivoros.setText(Double.toString(totalCarnivoros));
-        lblTotalHerviboros.setText(Double.toString(totalHerbivoros));
-        lblTotalGeneral.setText(Double.toString(totalGeneral));
     }
+    
+    double totalGeneral = totalCarnivoros + totalHerbivoros;
+
+    lblTotalCarnivoros.setText(Double.toString(totalCarnivoros));
+    lblTotalHerviboros.setText(Double.toString(totalHerbivoros));
+    lblTotalGeneral.setText(Double.toString(totalGeneral));
+}
     
 
     @SuppressWarnings("unchecked")

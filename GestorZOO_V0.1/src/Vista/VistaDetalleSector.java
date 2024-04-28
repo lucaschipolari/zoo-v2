@@ -22,7 +22,7 @@ public class VistaDetalleSector extends VistaBase implements IVistaDetalleSector
         btnVolver.addActionListener(control);
         btnVolver.setActionCommand(VOLVER);
     }
-/*
+
     public void cargarSector(Sector detallaSector) {
         lblidSector.setText(Integer.toString(detallaSector.getNumeroId()));
         lblLatitud.setText(Double.toString(detallaSector.getLatitud()));
@@ -32,16 +32,16 @@ public class VistaDetalleSector extends VistaBase implements IVistaDetalleSector
                 lblNroDni.setText(Integer.toString(detallaSector.getEncargado().getDni()));
                 lblDomicilioCalle.setText(detallaSector.getEncargado().getDomicilio());
         }
-        lblTipoPoblacion.setText(detallaSector.validarPoblacion());
+        lblTipoPoblacion.setText(detallaSector.getTipoAlimentacion().toString());
         
         switch(lblTipoPoblacion.getText()){
             case "Vacio":
                     this.getContentPane().setBackground(new Color(220,220,220));
                 break;
-            case "Carnivoros":
+            case "CARNIVORO":
                     this.getContentPane().setBackground(new Color(250,225,155));
                 break;
-            case "Herbivoros":
+            case "HERBIVORO":
                     this.getContentPane().setBackground(new Color(180,215,165));
                 break;
         }
@@ -52,8 +52,8 @@ public class VistaDetalleSector extends VistaBase implements IVistaDetalleSector
         lblEspMax.setText(actualYMaximo);
         cargarTablaAnimales(detallaSector.getPoblacion());
     }
-*/
-    /*public void cargarTablaAnimales(ArrayList<Animal> animales) {
+
+    public void cargarTablaAnimales(ArrayList<Animal> animales) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("País Origen");
@@ -72,7 +72,7 @@ public class VistaDetalleSector extends VistaBase implements IVistaDetalleSector
                 break;
         }
 
-        for (Animal animal : animales) {
+       /* for (Animal animal : animales) {
             double extra = 0;
             if(animal instanceof Herbivoro) extra = ((Herbivoro) animal).getBaseAlimento();
             else if(animal instanceof Carnivoro) extra = ((Carnivoro) animal).getPorcentualAlimento() * 100;
@@ -87,7 +87,7 @@ public class VistaDetalleSector extends VistaBase implements IVistaDetalleSector
             };
             modelo.addRow(rowData);
         }
-
+*/
         tablaAnimales.setModel(modelo);
 
         // Set table font
@@ -97,7 +97,7 @@ public class VistaDetalleSector extends VistaBase implements IVistaDetalleSector
         tablaAnimales.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         this.pack();
     }
-*/
+
     
     public void volverSeleccionado() {
         this.dispose();

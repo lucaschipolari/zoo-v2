@@ -22,7 +22,10 @@ public class Herbivoro extends Animal{
     public double getValorFijo() {
         return valorFijo;
     }
-
+    @Override
+    public double calcularAlimento(){
+        return peso * porcentajePeso + valorFijo;
+    }
     @Override
     public double calcularCantidadDeComida() {
         return peso * porcentajePeso + valorFijo;

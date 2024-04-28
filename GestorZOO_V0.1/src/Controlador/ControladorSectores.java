@@ -32,9 +32,9 @@ public class ControladorSectores implements IControlador {
             vista.representarAlimento(repo.getSectores());
         }
         else if(e.getActionCommand().contains(vista.DETALLAR_SECTOR)){
-            //ControladorDetalleSector controlDetalle = new ControladorDetalleSector(repo.consultarSector(e.getActionCommand().replace("detallarSector","")), this);
+            ControladorDetalleSector controlDetalle = new ControladorDetalleSector(repo.consultarSector(e.getActionCommand().replace("detallarSector","")), this);
             //ControladorDetalleSector controlDetalle = new ControladorDetalleSector(repo.getSector(e.getID()), this);
-            //controlDetalle.iniciar();
+            controlDetalle.iniciar();
             
         }
     }

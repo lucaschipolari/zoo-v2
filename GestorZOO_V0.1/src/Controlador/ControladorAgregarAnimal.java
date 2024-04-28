@@ -57,9 +57,9 @@ public class ControladorAgregarAnimal implements IControlador {
                 Logger.getLogger(ControladorAgregarAnimal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 
-//                repo.iniciaAgregarAnimal(vista.aceptarSeleccionado());
-//                vista.volverSeleccionado();
-//                padre.terminado(vista.ACEPTAR);
+                //repo.iniciaAgregarAnimal(vista.aceptarSeleccionado());
+               vista.volverSeleccionado();
+               padre.terminado(vista.ACEPTAR);
 //                
         }
         

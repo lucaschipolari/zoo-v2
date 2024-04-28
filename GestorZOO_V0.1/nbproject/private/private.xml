@@ -3,11 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/matia/OneDrive/Desktop/Codificar/zoo-v2/GestorZOO_V0.1/src/Datos/Repositorio.java</file>
-            <file>file:/C:/Users/matia/OneDrive/Desktop/Codificar/zoo-v2/GestorZOO_V0.1/src/Controlador/ControladorSectores.java</file>
-            <file>file:/C:/Users/matia/OneDrive/Desktop/Codificar/zoo-v2/GestorZOO_V0.1/src/Modelo/Color.java</file>
-            <file>file:/C:/Users/matia/OneDrive/Desktop/Codificar/zoo-v2/GestorZOO_V0.1/src/Vista/VistaSectores.java</file>
-            <file>file:/C:/Users/matia/OneDrive/Desktop/Codificar/zoo-v2/GestorZOO_V0.1/src/Modelo/Sector.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Vista/VistaDetalleSector.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Vista/VistaBase.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Datos/Repositorio.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Vista/Utils.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Carnivoro.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Controlador/IControlador.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Controlador/ControladorDetalleSector.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Animal.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Empleado.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Principal/Main.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/TipoAlimentacion.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Vista/VistaSectores.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Vista/IVistaSectores.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Herbivoro.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Persona.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Controlador/ControladorSectores.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Utilidades/VerificadorDouble.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Utilidades/Mensaje.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Sector.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Vista/VistaAgregarAnimal.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Color.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Controlador/ControladorAgregarAnimal.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Especie.java</file>
+            <file>file:/C:/Users/zluca/OneDrive/Escritorio/zoo-v2/zoo-v2/GestorZOO_V0.1/src/Modelo/Pais.java</file>
         </group>
     </open-files>
 </project-private>

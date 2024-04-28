@@ -29,6 +29,10 @@ public class Carnivoro extends Animal {
     public double getPorcentajeExtraASumar(){
         return 1 + (peso > pesoMaximo ? porcentajeExtra : 0);
     }
+      @Override
+    public double calcularAlimento(){
+         return peso * especie.getPorcentajePesoCarnivoro() * getPorcentajeExtraASumar();
+    }
     @Override
     public double calcularCantidadDeComida() {
         return peso * especie.getPorcentajePesoCarnivoro() * getPorcentajeExtraASumar();
